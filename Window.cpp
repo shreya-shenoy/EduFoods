@@ -16,7 +16,7 @@ int main() {
     HashTable table;
     set<string> s;
     // CREATING AND INITIALIZING 20-ARY TREE AND HASH TABLE
-    for(int i = 1; i < 20000; i++) // upper bound set to 15 (instead of data.size()) for debugging
+    for(int i = 1; i < 20000; i++)
     {
         if(data.at(i).size() >= 12) // make sure the row size is at least 12, gets rid of data points w/ missing entries
         {
@@ -106,13 +106,13 @@ int main() {
     content.setFillColor(sf::Color(116, 193, 232, 255));
     content.setPosition(100, 275);
 
+    // TEXT FOR TITLE
     if(!font.loadFromFile("font.ttf"))
         cout << "error" << endl;
     welcomeText.setFont(font);
     welcomeText.setCharacterSize(35);
     welcomeText.setFillColor(sf::Color(91, 101, 166, 255));
     welcomeText.setStyle(sf::Text::Bold);
-
     welcomeText.setString("EduFoods: Informing Adverse Reactions");
     sf::FloatRect textRect = welcomeText.getLocalBounds();
     welcomeText.setOrigin(textRect.left + textRect.width / 2.0f, textRect.top + textRect.height / 2.0f);
@@ -121,6 +121,7 @@ int main() {
     sf::Text outputText;
 
 
+    // TEXT FOR OUTPUT
     outputText.setFont(font);
     outputText.setCharacterSize(14);
     outputText.setFillColor(sf::Color(55, 69, 164, 255));
@@ -128,9 +129,8 @@ int main() {
     outputText.setString("");
     string output = "";
 
+    // TEXT FOR CHOSEN DATE
     sf::Text selectedYear;
-
-
     selectedYear.setFont(font);
     selectedYear.setCharacterSize(13);
     selectedYear.setFillColor(sf::Color::Blue);
@@ -139,9 +139,8 @@ int main() {
     string chosenYear = "";
 
 
+    // TEXT FOR CHOSEN CATEGORY
     sf::Text selectedCat;
-
-
     selectedCat.setFont(font);
     selectedCat.setCharacterSize(13);
     selectedCat.setFillColor(sf::Color::Blue);
@@ -149,9 +148,9 @@ int main() {
     selectedCat.setString("");
     string chosenCat = "";
 
+
+    // TEXT FOR CHOSEN OUTPUT TYPE
     sf::Text selectedType;
-
-
     selectedType.setFont(font);
     selectedType.setCharacterSize(13);
     selectedType.setFillColor(sf::Color::Blue);
@@ -159,9 +158,9 @@ int main() {
     selectedType.setString("");
     string chosenType = "";
 
+
+    // TEXT FOR CHOSEN DATA STRUCTURE
     sf::Text selectedStructure;
-
-
     selectedStructure.setFont(font);
     selectedStructure.setCharacterSize(13);
     selectedStructure.setFillColor(sf::Color::Blue);
@@ -174,8 +173,6 @@ int main() {
     intro.setCharacterSize(23);
     intro.setFillColor(sf::Color(91, 101, 166, 255));
     intro.setStyle(sf::Text::Bold);
-    //welcomeText.setPosition(800/2.0f - 800/4.0f, 600/2.0f -150);
-
     intro.setString("To learn more about adverse consumer events, \n\n please select the filters below.");
     sf::FloatRect textRect2 = welcomeText.getLocalBounds();
     intro.setOrigin(textRect2.left + textRect2.width / 2.0f, textRect2.top + textRect2.height / 2.0f);
@@ -238,7 +235,6 @@ int main() {
     option10.setPosition(400, 450);
 
     // Text for options
-
     font.loadFromFile("font.ttf"); // Replace with the path to your font file
 
     sf::Text dropDown1("Product Category", font, 15);
@@ -276,9 +272,7 @@ int main() {
 
 
 
-    bool isDropdown_catOpen = false;
-
-
+    bool isDropdown_catOpen = false; // is the dropdown for categories open
 
 
 
@@ -368,7 +362,8 @@ int main() {
 
     // DROP DOWN 3: OUTPUT TYPES //////////////////////////////
 
-    bool isDropdown_OutputOpen = false;
+    bool isDropdown_OutputOpen = false; // is the dropdown for output types open
+
     sf::RectangleShape dropdownButton_output(sf::Vector2f(150, 25));
     dropdownButton_output.setFillColor(sf::Color(38, 129, 175, 255));
     dropdownButton_output.setPosition(600, 200);
@@ -450,15 +445,12 @@ int main() {
     sf::Text textOption2_structure("Hash Table", font, 15);
     textOption2_structure.setPosition(40, 255);
 
-    /*sf::Text textOption3_structure("Both Structures", font, 15);
-    textOption3_structure.setPosition(40, 280);
-*/
 
 //////////////////////////////////////
 
 
 
-    bool isDropdown_datesOpen = false;
+    bool isDropdown_datesOpen = false; // is the dropdown for dates open
     bool usingTree = false;
     bool usingTable = false;
     bool usingBoth = false;
@@ -467,8 +459,8 @@ int main() {
 
     string category = "";
     string year = "";
-    vector<Node> treeNodes;
-    vector<Node> tableNodes;
+    vector<Node> treeNodes; // list of nodes in the tree
+    vector<Node> tableNodes; // list of nodes in the table
     int outputOption = 0;
     while (window.isOpen()) {
         // Process events
@@ -478,7 +470,7 @@ int main() {
             if (event.type == sf::Event::Closed) {
                 window.close();
             }
-            if (event.type == sf::Event::MouseWheelScrolled)
+            if (event.type == sf::Event::MouseWheelScrolled) // scroll bar functionality
             {
                 if (event.mouseWheelScroll.wheel == sf::Mouse::VerticalWheel)
                 {
@@ -488,7 +480,8 @@ int main() {
                 }
             }
 
-            if (event.mouseButton.button == sf::Mouse::Left) {
+            if (event.mouseButton.button == sf::Mouse::Left) // handle mouse clicked
+            {
                 sf::Mouse mouse;
                 auto coordinate = mouse.getPosition(window);
                 // CHECK IF DROPDOWN 1 CLICKED
@@ -509,14 +502,14 @@ int main() {
                     isDropdown_StructureOpen = true;
                 }
 
-                if (isDropdown_catOpen) { ////////////// CATEGORY DROPDOWN
+                if (isDropdown_catOpen) {
+                    // IF DROPDOWN CATEGORY CLICKED
                     if (option1.getGlobalBounds().contains(static_cast<sf::Vector2f>(coordinate))) {
                         category = "\"Meat Meat Products and Poultry\" ";
 
                         tree.setCategory(category);
                         table.setCategory(category);
                         chosenCat = "You've selected: \n\n" + category;
-                        cout << "MEAT" << tree.getCategory() << endl;
                         isDropdown_catOpen = false;
                     } else if (option2.getGlobalBounds().contains(static_cast<sf::Vector2f>(coordinate))) {
                         category = "Cereal Prep/Breakfast Food";
@@ -582,9 +575,9 @@ int main() {
                         isDropdown_catOpen = false;
                     }
                 }
-                else  if (isDropdown_datesOpen) { //////////////
+                else  if (isDropdown_datesOpen) {
+                    // IF DROPDOWN DATES OPEN
                     if (option1_dates.getGlobalBounds().contains(static_cast<sf::Vector2f>(coordinate))) {
-                        cout << "2023" << endl;
                         year = "2023";
                         tree.setYear(year);
                         table.setYear(year);
@@ -657,63 +650,57 @@ int main() {
                 }
                 else  if (isDropdown_OutputOpen) {
                     ///CLOCK STARTING
-//                    auto startTime=chrono::high_resolution_clock::now();
+                    // IF DROPDOWN OUTPUT TYPES OPEN
                     auto startTime = chrono::steady_clock::now(); // begins timer when output dropdown pressed
 
 
                     if (option1_output.getGlobalBounds().contains(static_cast<sf::Vector2f>(coordinate))) {
                         outputOption = 1;
-                        //cout << "OUTPUT 1" << tree.getYear() << tree.getCategory() << endl;
+
                         vector<Node> treeNodes = tree.search(tree.getYear(), tree.getCategory());
                         vector<Node> tableNodes = table.search(table.getCategory(), table.getYear());
                         if(usingTree){
                             output = tree.displayOutput(treeNodes, outputOption);
-//                            auto elapsedTime=chrono::duration_cast<chrono::seconds>(chrono::high_resolution_clock::now()-startTime).count();
                             auto endTime = chrono::steady_clock::now(); // end time after choice selected
                             float elapsedTime = chrono::duration_cast<chrono::duration<float>>(endTime - startTime).count();
                             totalTime = 1000*elapsedTime; // time in milliseconds
-                            cout << "elapsed time for tree: " << totalTime << endl;
+                            //cout << "elapsed time for tree: " << totalTime << endl;
                             isOutput_select=true;
 
-                            // output time to screen in milliseconds using first three non-zero digits?
-//                            cout << "in milliseconds" << int(totalTime * 10) << (totalTime * 100) % 10 << (totalTime * 1000) % 10 << endl;
+                            //  cout << "in milliseconds" << int(totalTime * 10) << (totalTime * 100) % 10 << (totalTime * 1000) % 10 << endl;
 
                         }
 
                         else if(usingTable){
                             output = table.displayOutput(tableNodes, outputOption);
-//                            auto elapsedTime=chrono::duration_cast<chrono::seconds>(chrono::high_resolution_clock::now()-startTime).count();
                             auto endTime = chrono::steady_clock::now(); // end time after choice
                             float elapsedTime = chrono::duration_cast<chrono::duration<float>>(endTime - startTime).count();
                             totalTime = 1000*elapsedTime; // time in milliseconds
-                            cout << "elapsed time for table: " << totalTime << endl;
+                            //cout << "elapsed time for table: " << totalTime << endl;
                             isOutput_select=true;
                         }
                         chosenType = "You've selected: \n\nAll info";
                         isDropdown_OutputOpen = false;
                     } else if (option2_output.getGlobalBounds().contains(static_cast<sf::Vector2f>(coordinate))) {
                         outputOption = 2;
-                        //cout << "OUTPUT 2" << endl;
                         vector<Node> treeNodes = tree.search(tree.getYear(), tree.getCategory());
                         vector<Node> tableNodes = table.search(table.getCategory(), table.getYear());
                         if(usingTree){
                             output = tree.displayOutput(treeNodes, outputOption);
-//                            auto elapsedTime=chrono::duration_cast<chrono::seconds>(chrono::high_resolution_clock::now()-startTime).count();
                             auto endTime = chrono::steady_clock::now(); // end time after choice
                             float elapsedTime = chrono::duration_cast<chrono::duration<float>>(endTime - startTime).count();
                             totalTime = 1000*elapsedTime; // time in milliseconds
-                            cout << "elapsed time for tree: " << totalTime << endl;
+                            //cout << "elapsed time for tree: " << totalTime << endl;
                             isOutput_select=true;
 
                         }
 
                         else if(usingTable){
                             output = table.displayOutput(tableNodes, outputOption);
-//                            auto elapsedTime=chrono::duration_cast<chrono::seconds>(chrono::high_resolution_clock::now()-startTime).count();
                             auto endTime = chrono::steady_clock::now(); // end time after choice
                             float elapsedTime = chrono::duration_cast<chrono::duration<float>>(endTime - startTime).count();
                             totalTime = 1000*elapsedTime; // time in milliseconds
-                            cout << "elapsed time for table: " << totalTime << endl;
+                            //cout << "elapsed time for table: " << totalTime << endl;
                             isOutput_select=true;
 
                         }
@@ -722,27 +709,24 @@ int main() {
                     }
                     else if (option3_output.getGlobalBounds().contains(static_cast<sf::Vector2f>(coordinate))) {
                         outputOption = 3;
-                        //cout << "OUTPUT 3" << endl;
                         vector<Node> treeNodes = tree.search(tree.getYear(), tree.getCategory());
                         vector<Node> tableNodes = table.search(table.getCategory(), table.getYear());
                         if(usingTree){
                             output = tree.displayOutput(treeNodes, outputOption);
-//                            auto elapsedTime=chrono::duration_cast<chrono::seconds>(chrono::high_resolution_clock::now()-startTime).count();
                             auto endTime = chrono::steady_clock::now(); // end time after choice
                             float elapsedTime = chrono::duration_cast<chrono::duration<float>>(endTime - startTime).count();
                             totalTime = 1000*elapsedTime; // time in milliseconds
-                            cout << "elapsed time for tree: " << totalTime << endl;
+                            //cout << "elapsed time for tree: " << totalTime << endl;
                             isOutput_select=true;
 
                         }
 
                         else if(usingTable){
                             output = table.displayOutput(tableNodes, outputOption);
-//                            auto elapsedTime=chrono::duration_cast<chrono::seconds>(chrono::high_resolution_clock::now()-startTime).count();
                             auto endTime = chrono::steady_clock::now(); // end time after choice
                             float elapsedTime = chrono::duration_cast<chrono::duration<float>>(endTime - startTime).count();
                             totalTime = 1000*elapsedTime; // time in milliseconds
-                            cout << "elapsed time for table: " << totalTime << endl;
+                            //cout << "elapsed time for table: " << totalTime << endl;
                             isOutput_select=true;
 
                         }
@@ -751,31 +735,24 @@ int main() {
                     }
                     else if (option4_output.getGlobalBounds().contains(static_cast<sf::Vector2f>(coordinate))) {
                         outputOption = 4;
-                        //cout << "OUTPUT 4" << endl;
                         vector<Node> treeNodes = tree.search(tree.getYear(), tree.getCategory());
                         vector<Node> tableNodes = table.search(table.getCategory(), table.getYear());
-                        /*if(usingBoth){
-                            // USE BOTH
-
-                        }*/
                         if(usingTree){
                             output = tree.displayOutput(treeNodes, outputOption);
-//                            auto elapsedTime=chrono::duration_cast<chrono::seconds>(chrono::high_resolution_clock::now()-startTime).count();
                             auto endTime = chrono::steady_clock::now(); // end time after choice
                             float elapsedTime = chrono::duration_cast<chrono::duration<float>>(endTime - startTime).count();
                             totalTime = 1000*elapsedTime; // time in milliseconds
-                            cout << "elapsed time for tree: " << totalTime << endl;
+                            //cout << "elapsed time for tree: " << totalTime << endl;
                             isOutput_select=true;
 
                         }
 
                         else if(usingTable){
                             output = table.displayOutput(tableNodes, outputOption);
-//                            auto elapsedTime=chrono::duration_cast<chrono::seconds>(chrono::high_resolution_clock::now()-startTime).count();
                             auto endTime = chrono::steady_clock::now(); // end timer after choice is made
                             float elapsedTime = chrono::duration_cast<chrono::duration<float>>(endTime - startTime).count();
                             totalTime = 1000*elapsedTime; // represent time in milliseconds
-                            cout << "elapsed time for table: " << totalTime << endl;
+                            //cout << "elapsed time for table: " << totalTime << endl;
                             isOutput_select=true;
                         }
                         chosenType = "You've selected: \n\nSymptoms";
@@ -783,16 +760,14 @@ int main() {
                     }
                     else if (option5_output.getGlobalBounds().contains(static_cast<sf::Vector2f>(coordinate))) {
                         outputOption = 5;
-                        //cout << "OUTPUT 5" << endl;
                         vector<Node> treeNodes = tree.search(tree.getYear(), tree.getCategory());
                         vector<Node> tableNodes = table.search(table.getCategory(), table.getYear());
                         if(usingTree){
                             output = tree.displayOutput(treeNodes, outputOption);
-//                            auto elapsedTime=chrono::duration_cast<chrono::seconds>(chrono::high_resolution_clock::now()-startTime).count();
                             auto endTime = chrono::steady_clock::now(); // end time after choice
                             float elapsedTime = chrono::duration_cast<chrono::duration<float>>(endTime - startTime).count();
                             totalTime = 1000*elapsedTime; // represent time in milliseconds
-                            cout << "elapsed time for tree: " << totalTime << endl;
+                            //cout << "elapsed time for tree: " << totalTime << endl;
                             isOutput_select=true;
 
 
@@ -800,11 +775,10 @@ int main() {
 
                         else if(usingTable){
                             output = table.displayOutput(tableNodes, outputOption);
-//                            auto elapsedTime=chrono::duration_cast<chrono::seconds>(chrono::high_resolution_clock::now()-startTime).count();
                             auto endTime = chrono::steady_clock::now(); // end time after choice is made
                             float elapsedTime = chrono::duration_cast<chrono::duration<float>>(endTime - startTime).count();
                             totalTime = 1000*elapsedTime; // represent time in milliseconds
-                            cout << "elapsed time for table: " << totalTime << endl;
+                            //cout << "elapsed time for table: " << totalTime << endl;
                             isOutput_select=true;
 
                         }
@@ -816,7 +790,9 @@ int main() {
 
 
                 }
-                else  if (isDropdown_StructureOpen) {
+                else  if (isDropdown_StructureOpen)
+                // IF DROPDOWN STRUCTURE OPEN
+                {
                     if (option1_structure.getGlobalBounds().contains(static_cast<sf::Vector2f>(coordinate))) {
                         chosenStructure= "You've selected: \n\n20-ary Tree";
                         usingTree = true;
@@ -872,19 +848,20 @@ int main() {
         outputText.setPosition(sf::Vector2f(800/2.0f, 800/2.0f - 45));
         window.draw(outputText);
 
+        // year chosen
         selectedYear.setString(chosenYear);
         sf::FloatRect textRect1 = selectedYear.getLocalBounds();
         selectedYear.setOrigin(textRect1.left + textRect1.width / 2.0f, textRect1.top + textRect1.height / 2.0f);
         selectedYear.setPosition(sf::Vector2f(550/2.0f, 450/2.0f - 45));
         window.draw(selectedYear);
 
-
+        // category chosen
         selectedCat.setString(chosenCat);
         sf::FloatRect textRect2 = selectedCat.getLocalBounds();
         selectedCat.setOrigin(textRect2.left + textRect2.width / 2.0f, textRect2.top + textRect2.height / 2.0f);
         selectedCat.setPosition(sf::Vector2f(950/2.0f, 450/2.0f - 45));
         window.draw(selectedCat);
-
+        
         selectedType.setString(chosenType);
         sf::FloatRect textRect3 = selectedType.getLocalBounds();
         selectedType.setOrigin(textRect3.left + textRect3.width / 2.0f, textRect3.top + textRect3.height / 2.0f);
@@ -898,8 +875,7 @@ int main() {
         window.draw(selectedStructure);
 
         content.setPosition(0, -scrollPosition);
-        //window.draw(scrollBar);
-       // window.draw(content);
+
 
         // Draw the dropdown options if the dropdown is open
         if (isDropdown_catOpen) {

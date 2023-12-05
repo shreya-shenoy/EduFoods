@@ -16,7 +16,8 @@ int main() {
     HashTable table;
     set<string> s;
     // CREATING AND INITIALIZING 20-ARY TREE AND HASH TABLE
-    for(int i = 1; i < 20000; i++)
+    cout << data.size() << endl;
+    for(int i = 1; i < 1000; i++)
     {
         if(data.at(i).size() >= 12) // make sure the row size is at least 12, gets rid of data points w/ missing entries
         {
@@ -562,7 +563,7 @@ int main() {
                     }
                     else if (option9.getGlobalBounds().contains(static_cast<sf::Vector2f>(coordinate))) {
                         category = "Vit/Min/Prot/Unconv Diet(Human/Animal)";
-                        chosenCat = "You've selected: \n\n" + category;
+                        chosenCat = "You've selected: \n\n Vitamins/Minerals";
                         tree.setCategory(category);
                         table.setCategory(category);
                         isDropdown_catOpen = false;

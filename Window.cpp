@@ -17,7 +17,7 @@ int main() {
     set<string> s;
     // CREATING AND INITIALIZING 20-ARY TREE AND HASH TABLE
     cout << data.size() << endl;
-    for(int i = 1; i < 1000; i++)
+    for(int i = 1; i < data.size(); i++)
     {
         if(data.at(i).size() >= 12) // make sure the row size is at least 12, gets rid of data points w/ missing entries
         {
@@ -665,7 +665,8 @@ int main() {
                             auto endTime = chrono::steady_clock::now(); // end time after choice selected
                             float elapsedTime = chrono::duration_cast<chrono::duration<float>>(endTime - startTime).count();
                             totalTime = 1000*elapsedTime; // time in milliseconds
-                            //cout << "elapsed time for tree: " << totalTime << endl;
+                            cout << "elapsed time for tree: " << totalTime << endl;
+                            usingTable = false;
                             isOutput_select=true;
 
                             //  cout << "in milliseconds" << int(totalTime * 10) << (totalTime * 100) % 10 << (totalTime * 1000) % 10 << endl;
@@ -677,7 +678,8 @@ int main() {
                             auto endTime = chrono::steady_clock::now(); // end time after choice
                             float elapsedTime = chrono::duration_cast<chrono::duration<float>>(endTime - startTime).count();
                             totalTime = 1000*elapsedTime; // time in milliseconds
-                            //cout << "elapsed time for table: " << totalTime << endl;
+                            cout << "elapsed time for table: " << totalTime << endl;
+                            usingTree = false;
                             isOutput_select=true;
                         }
                         chosenType = "You've selected: \n\nAll info";
@@ -691,8 +693,9 @@ int main() {
                             auto endTime = chrono::steady_clock::now(); // end time after choice
                             float elapsedTime = chrono::duration_cast<chrono::duration<float>>(endTime - startTime).count();
                             totalTime = 1000*elapsedTime; // time in milliseconds
-                            //cout << "elapsed time for tree: " << totalTime << endl;
+                            cout << "elapsed time for tree: " << totalTime << endl;
                             isOutput_select=true;
+                            usingTable = false;
 
                         }
 
@@ -701,8 +704,9 @@ int main() {
                             auto endTime = chrono::steady_clock::now(); // end time after choice
                             float elapsedTime = chrono::duration_cast<chrono::duration<float>>(endTime - startTime).count();
                             totalTime = 1000*elapsedTime; // time in milliseconds
-                            //cout << "elapsed time for table: " << totalTime << endl;
+                            cout << "elapsed time for table: " << totalTime << endl;
                             isOutput_select=true;
+                            usingTree = false;
 
                         }
                         chosenType = "You've selected: \n\nDates";
@@ -717,8 +721,9 @@ int main() {
                             auto endTime = chrono::steady_clock::now(); // end time after choice
                             float elapsedTime = chrono::duration_cast<chrono::duration<float>>(endTime - startTime).count();
                             totalTime = 1000*elapsedTime; // time in milliseconds
-                            //cout << "elapsed time for tree: " << totalTime << endl;
+                            cout << "elapsed time for tree: " << totalTime << endl;
                             isOutput_select=true;
+                            usingTable = false;
 
                         }
 
@@ -727,8 +732,9 @@ int main() {
                             auto endTime = chrono::steady_clock::now(); // end time after choice
                             float elapsedTime = chrono::duration_cast<chrono::duration<float>>(endTime - startTime).count();
                             totalTime = 1000*elapsedTime; // time in milliseconds
-                            //cout << "elapsed time for table: " << totalTime << endl;
+                            cout << "elapsed time for table: " << totalTime << endl;
                             isOutput_select=true;
+                            usingTree = false;
 
                         }
                         chosenType = "You've selected: \n\nProduct Names";
@@ -743,8 +749,9 @@ int main() {
                             auto endTime = chrono::steady_clock::now(); // end time after choice
                             float elapsedTime = chrono::duration_cast<chrono::duration<float>>(endTime - startTime).count();
                             totalTime = 1000*elapsedTime; // time in milliseconds
-                            //cout << "elapsed time for tree: " << totalTime << endl;
+                            cout << "elapsed time for tree: " << totalTime << endl;
                             isOutput_select=true;
+                            usingTable = false;
 
                         }
 
@@ -753,8 +760,9 @@ int main() {
                             auto endTime = chrono::steady_clock::now(); // end timer after choice is made
                             float elapsedTime = chrono::duration_cast<chrono::duration<float>>(endTime - startTime).count();
                             totalTime = 1000*elapsedTime; // represent time in milliseconds
-                            //cout << "elapsed time for table: " << totalTime << endl;
+                            cout << "elapsed time for table: " << totalTime << endl;
                             isOutput_select=true;
+                            usingTree = false;
                         }
                         chosenType = "You've selected: \n\nSymptoms";
                         isDropdown_OutputOpen = false;
@@ -768,8 +776,9 @@ int main() {
                             auto endTime = chrono::steady_clock::now(); // end time after choice
                             float elapsedTime = chrono::duration_cast<chrono::duration<float>>(endTime - startTime).count();
                             totalTime = 1000*elapsedTime; // represent time in milliseconds
-                            //cout << "elapsed time for tree: " << totalTime << endl;
+                            cout << "elapsed time for tree: " << totalTime << endl;
                             isOutput_select=true;
+                            usingTable = false;
 
 
                         }
@@ -779,8 +788,9 @@ int main() {
                             auto endTime = chrono::steady_clock::now(); // end time after choice is made
                             float elapsedTime = chrono::duration_cast<chrono::duration<float>>(endTime - startTime).count();
                             totalTime = 1000*elapsedTime; // represent time in milliseconds
-                            //cout << "elapsed time for table: " << totalTime << endl;
+                            cout << "elapsed time for table: " << totalTime << endl;
                             isOutput_select=true;
+                            usingTree = false;
 
                         }
 

@@ -4,7 +4,7 @@ project(Project3)
 
 set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -std=c++11")
 
-set(SOURCE_FILES main.cpp Node.cpp Node.h Tree.cpp Tree.h Window.cpp Window.h DataExtract.cpp DataExtract.h HashTable.h HashTable.cpp)
+set(SOURCE_FILES Node.cpp Node.h Tree.cpp Tree.h Window.cpp Window.h DataExtract.cpp DataExtract.h HashTable.h HashTable.cpp)
 add_executable(Project3 ${SOURCE_FILES} Tree.cpp)
 include_directories(/usr/local/include)
 

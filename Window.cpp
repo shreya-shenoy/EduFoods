@@ -23,6 +23,7 @@ int main() {
             string date = data.at(i).at(0);
             string product  = "";
             int index = 4;
+            // add product entry without commas
             for(int j = 4; j < data.at(i).size(); j++){
                 if(j == 4 && data.at(i).at(j).front() != '"'){
                     product =  data.at(i).at(j);
@@ -39,6 +40,7 @@ int main() {
             }
             index+=2;
             string category = "";
+            // add category entry without commas
             for(int j = index; j < data.at(i).size(); j++){
                 if(j == index && data.at(i).at(j).front() != '"'){
                     category =  data.at(i).at(j);
@@ -56,6 +58,7 @@ int main() {
 
             string symptoms = "";
             index += 4;
+            // add symptoms entry without commas
             for(int j = index; j < data.at(i).size(); j++){
                 if(j == index && data.at(i).at(j).front() != '"'){
                     symptoms =  data.at(i).at(j);
@@ -77,10 +80,8 @@ int main() {
         }
 
     }
-    for(auto iter = s.begin(); iter != s.end(); ++iter){
-       cout << *iter << endl;
-   }
-  // tree.search("2023");
+
+
 
 
 
@@ -111,7 +112,7 @@ int main() {
     welcomeText.setCharacterSize(35);
     welcomeText.setFillColor(sf::Color(91, 101, 166, 255));
     welcomeText.setStyle(sf::Text::Bold);
-    //welcomeText.setPosition(800/2.0f - 800/4.0f, 600/2.0f -150);
+
     welcomeText.setString("EduFoods: Informing Adverse Reactions");
     sf::FloatRect textRect = welcomeText.getLocalBounds();
     welcomeText.setOrigin(textRect.left + textRect.width / 2.0f, textRect.top + textRect.height / 2.0f);
@@ -415,7 +416,7 @@ int main() {
     sf::Text textOption5_output("Number of Cases", font, 15);
     textOption5_output.setPosition(610, 330);
 
-        // DROP DOWN 4: DATA STRUCTURES //////////////////////////////
+    // DROP DOWN 4: DATA STRUCTURES //////////////////////////////
 
     bool isDropdown_StructureOpen = false;
     sf::RectangleShape dropdownButton_structure(sf::Vector2f(150, 25));
@@ -461,7 +462,7 @@ int main() {
     bool usingTree = false;
     bool usingTable = false;
     bool usingBoth = false;
-    bool isOutput_select=false; //seeing if specific output selected
+    bool isOutput_select=false; // seeing if specific output selected
     float totalTime=0; //for total clock time to perform operation
 
     string category = "";
@@ -657,7 +658,7 @@ int main() {
                 else  if (isDropdown_OutputOpen) {
                     ///CLOCK STARTING
 //                    auto startTime=chrono::high_resolution_clock::now();
-                    auto startTime = chrono::steady_clock::now();
+                    auto startTime = chrono::steady_clock::now(); // begins timer when output dropdown pressed
 
 
                     if (option1_output.getGlobalBounds().contains(static_cast<sf::Vector2f>(coordinate))) {
@@ -668,9 +669,9 @@ int main() {
                         if(usingTree){
                             output = tree.displayOutput(treeNodes, outputOption);
 //                            auto elapsedTime=chrono::duration_cast<chrono::seconds>(chrono::high_resolution_clock::now()-startTime).count();
-                            auto endTime = chrono::steady_clock::now();
+                            auto endTime = chrono::steady_clock::now(); // end time after choice selected
                             float elapsedTime = chrono::duration_cast<chrono::duration<float>>(endTime - startTime).count();
-                            totalTime = 1000*elapsedTime;
+                            totalTime = 1000*elapsedTime; // time in milliseconds
                             cout << "elapsed time for tree: " << totalTime << endl;
                             isOutput_select=true;
 
@@ -682,9 +683,9 @@ int main() {
                         else if(usingTable){
                             output = table.displayOutput(tableNodes, outputOption);
 //                            auto elapsedTime=chrono::duration_cast<chrono::seconds>(chrono::high_resolution_clock::now()-startTime).count();
-                            auto endTime = chrono::steady_clock::now();
+                            auto endTime = chrono::steady_clock::now(); // end time after choice
                             float elapsedTime = chrono::duration_cast<chrono::duration<float>>(endTime - startTime).count();
-                            totalTime = 1000*elapsedTime;
+                            totalTime = 1000*elapsedTime; // time in milliseconds
                             cout << "elapsed time for table: " << totalTime << endl;
                             isOutput_select=true;
                         }
@@ -698,9 +699,9 @@ int main() {
                         if(usingTree){
                             output = tree.displayOutput(treeNodes, outputOption);
 //                            auto elapsedTime=chrono::duration_cast<chrono::seconds>(chrono::high_resolution_clock::now()-startTime).count();
-                            auto endTime = chrono::steady_clock::now();
+                            auto endTime = chrono::steady_clock::now(); // end time after choice
                             float elapsedTime = chrono::duration_cast<chrono::duration<float>>(endTime - startTime).count();
-                            totalTime = 1000*elapsedTime;
+                            totalTime = 1000*elapsedTime; // time in milliseconds
                             cout << "elapsed time for tree: " << totalTime << endl;
                             isOutput_select=true;
 
@@ -709,9 +710,9 @@ int main() {
                         else if(usingTable){
                             output = table.displayOutput(tableNodes, outputOption);
 //                            auto elapsedTime=chrono::duration_cast<chrono::seconds>(chrono::high_resolution_clock::now()-startTime).count();
-                            auto endTime = chrono::steady_clock::now();
+                            auto endTime = chrono::steady_clock::now(); // end time after choice
                             float elapsedTime = chrono::duration_cast<chrono::duration<float>>(endTime - startTime).count();
-                            totalTime = 1000*elapsedTime;
+                            totalTime = 1000*elapsedTime; // time in milliseconds
                             cout << "elapsed time for table: " << totalTime << endl;
                             isOutput_select=true;
 
@@ -727,9 +728,9 @@ int main() {
                         if(usingTree){
                             output = tree.displayOutput(treeNodes, outputOption);
 //                            auto elapsedTime=chrono::duration_cast<chrono::seconds>(chrono::high_resolution_clock::now()-startTime).count();
-                            auto endTime = chrono::steady_clock::now();
+                            auto endTime = chrono::steady_clock::now(); // end time after choice
                             float elapsedTime = chrono::duration_cast<chrono::duration<float>>(endTime - startTime).count();
-                            totalTime = 1000*elapsedTime;
+                            totalTime = 1000*elapsedTime; // time in milliseconds
                             cout << "elapsed time for tree: " << totalTime << endl;
                             isOutput_select=true;
 
@@ -738,9 +739,9 @@ int main() {
                         else if(usingTable){
                             output = table.displayOutput(tableNodes, outputOption);
 //                            auto elapsedTime=chrono::duration_cast<chrono::seconds>(chrono::high_resolution_clock::now()-startTime).count();
-                            auto endTime = chrono::steady_clock::now();
+                            auto endTime = chrono::steady_clock::now(); // end time after choice
                             float elapsedTime = chrono::duration_cast<chrono::duration<float>>(endTime - startTime).count();
-                            totalTime = 1000*elapsedTime;
+                            totalTime = 1000*elapsedTime; // time in milliseconds
                             cout << "elapsed time for table: " << totalTime << endl;
                             isOutput_select=true;
 
@@ -760,9 +761,9 @@ int main() {
                         if(usingTree){
                             output = tree.displayOutput(treeNodes, outputOption);
 //                            auto elapsedTime=chrono::duration_cast<chrono::seconds>(chrono::high_resolution_clock::now()-startTime).count();
-                            auto endTime = chrono::steady_clock::now();
+                            auto endTime = chrono::steady_clock::now(); // end time after choice
                             float elapsedTime = chrono::duration_cast<chrono::duration<float>>(endTime - startTime).count();
-                            totalTime = 1000*elapsedTime;
+                            totalTime = 1000*elapsedTime; // time in milliseconds
                             cout << "elapsed time for tree: " << totalTime << endl;
                             isOutput_select=true;
 
@@ -771,9 +772,9 @@ int main() {
                         else if(usingTable){
                             output = table.displayOutput(tableNodes, outputOption);
 //                            auto elapsedTime=chrono::duration_cast<chrono::seconds>(chrono::high_resolution_clock::now()-startTime).count();
-                            auto endTime = chrono::steady_clock::now();
+                            auto endTime = chrono::steady_clock::now(); // end timer after choice is made
                             float elapsedTime = chrono::duration_cast<chrono::duration<float>>(endTime - startTime).count();
-                            totalTime = 1000*elapsedTime;
+                            totalTime = 1000*elapsedTime; // represent time in milliseconds
                             cout << "elapsed time for table: " << totalTime << endl;
                             isOutput_select=true;
                         }
@@ -785,15 +786,12 @@ int main() {
                         //cout << "OUTPUT 5" << endl;
                         vector<Node> treeNodes = tree.search(tree.getYear(), tree.getCategory());
                         vector<Node> tableNodes = table.search(table.getCategory(), table.getYear());
-//                        if(usingBoth){
-//                            // USE BOTH
-//                        }
                         if(usingTree){
                             output = tree.displayOutput(treeNodes, outputOption);
 //                            auto elapsedTime=chrono::duration_cast<chrono::seconds>(chrono::high_resolution_clock::now()-startTime).count();
-                            auto endTime = chrono::steady_clock::now();
+                            auto endTime = chrono::steady_clock::now(); // end time after choice
                             float elapsedTime = chrono::duration_cast<chrono::duration<float>>(endTime - startTime).count();
-                            totalTime = 1000*elapsedTime;
+                            totalTime = 1000*elapsedTime; // represent time in milliseconds
                             cout << "elapsed time for tree: " << totalTime << endl;
                             isOutput_select=true;
 
@@ -803,9 +801,9 @@ int main() {
                         else if(usingTable){
                             output = table.displayOutput(tableNodes, outputOption);
 //                            auto elapsedTime=chrono::duration_cast<chrono::seconds>(chrono::high_resolution_clock::now()-startTime).count();
-                            auto endTime = chrono::steady_clock::now();
+                            auto endTime = chrono::steady_clock::now(); // end time after choice is made
                             float elapsedTime = chrono::duration_cast<chrono::duration<float>>(endTime - startTime).count();
-                            totalTime = 1000*elapsedTime;
+                            totalTime = 1000*elapsedTime; // represent time in milliseconds
                             cout << "elapsed time for table: " << totalTime << endl;
                             isOutput_select=true;
 
@@ -840,18 +838,7 @@ int main() {
             }
 
         }
-        /*if (outputText.getLocalBounds().width > window.getSize().x)
-        {
-            // Recalculate the font size to fit the window
-            int fontSize = 13;
 
-            // Set the new font size
-            outputText.setCharacterSize(fontSize);
-
-            // Recalculate the position to center the text
-            outputText.setPosition((window.getSize().x - outputText.getLocalBounds().width) / 2,
-                             (window.getSize().y - outputText.getLocalBounds().height) / 2);
-        }*/
         // Clear the window
         window.clear(sf::Color(255, 255, 230, 255));
 
@@ -864,9 +851,10 @@ int main() {
             time_text.setPosition(sf::Vector2f(1000/2.0f-100, 400/2.0f -100));
         }
 
+        // draw all objects onto screen
         window.draw(time_text);
         window.draw(welcomeText);
-       // window.draw(intro);
+
         window.draw(dropdownButton);
         window.draw(dropDown1);
 
@@ -988,9 +976,6 @@ int main() {
             window.draw(option2_structure);
             window.draw(textOption1_structure);
             window.draw(textOption2_structure);
-
-            //window.draw(option3_structure);
-            //window.draw(textOption3_structure);
 
         }
 

@@ -13,7 +13,7 @@ private:
     string year;
     string category;
     void searchHelper(Node* root, vector<Node> &nodes, string year, string category);
-    void searchProdHelper(Node* root, string category);
+
 
 
 public:
@@ -27,7 +27,6 @@ public:
     void setCategory(string category);
     string getYear();
     string getCategory();
-    void outputAll(vector<Node> nodes);
     string displayOutput(vector<Node> list, int output_option);
 
 

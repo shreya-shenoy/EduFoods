@@ -8,7 +8,6 @@
 
 class Window {
 public:
-    void setText(sf::Text &text, float x, float y);
     Window();
 };
 

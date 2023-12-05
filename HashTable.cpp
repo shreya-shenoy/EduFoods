@@ -24,6 +24,7 @@ vector<list<Node*>> HashTable::get_hashTable(){
 
 size_t HashTable::rehashTable(string& key, int table_size){
     size_t hash = 0;
+    // multiply the ASCII of each character by 31 and sum to find hash
     for (char ch : key){
         hash = hash * 31 + ch;
     }
@@ -40,11 +41,9 @@ void HashTable::insert(string date, string product, string category, string symp
 
 
 
-    if (load_factor == max_load_factor) {
+    if (load_factor == max_load_factor) // if load factor == max load factor, resize the table
+    {
         table_size *= 2;
-
-        //vector<list<Node*>> newHashTable; //resize a new table
-        //newHashTable.resize(table_size);
 
         hashTable.resize(table_size);
 
@@ -60,7 +59,7 @@ void HashTable::insert(string date, string product, string category, string symp
             }
         } //end if for loop
 
-        //hashTable=newHashTable;
+
 
 
 
@@ -68,18 +67,19 @@ void HashTable::insert(string date, string product, string category, string symp
 
     hashTable[index].push_back(new Node(date, product, category, symptoms));
     curr_size++;
-    load_factor = double(curr_size) / double(table_size);
+    load_factor = double(curr_size) / double(table_size); // recalculate load factor
 
 
 }
 vector<Node> HashTable::search(string category, string date){
     vector<Node> products;
     int index = rehashTable(category, table_size);
-    auto bucket = hashTable[index];
+    auto bucket = hashTable[index]; // assign bucket to list at the hash index
     for (const auto& nodePtr : bucket) {
         // Dereference the pointer to access the Node object
         const Node& node = *nodePtr;
-        if(node.date.find(date) != string::npos && node.category == category){
+        if(node.date.find(date) != string::npos && node.category == category) // check if it matches the given category and date
+        {
             products.push_back(node);
         }
     }
@@ -111,32 +111,37 @@ void HashTable::setCategory(string category) {
 }
 string HashTable::displayOutput(vector<Node> list, int output_option) {
     string s = "";
-    if (output_option == 1) {
+    if (output_option == 1) // option 1: print all information of the nodes
+    {
         for (auto& node : list) {
             s += "Dates: " + node.date + " Product Names: " +
                  node.product + " Symptoms: " + node.symptoms;
             s += "\n\n\n\n\n";
         }
     }
-    else if (output_option == 2) {
+    else if (output_option == 2) // option 2: print the dates of the nodes
+    {
         for (auto& node : list) {
             s += "Dates: " + node.date;
             s += "\n\n\n\n\n";
         }
     }
-    else if (output_option == 3) {
+    else if (output_option == 3) // option 3: print the product names of the nodes
+    {
         for (auto& node : list) {
             s += "Product Names: " + node.product;
             s += "\n\n\n\n\n";
         }
     }
-    else if (output_option == 4) {
+    else if (output_option == 4) // option 4: print the symptoms of all the nodes
+    {
         for (auto& node : list) {
             s += "Symptoms: " + node.symptoms;
             s += "\n\n\n\n\n";
         }
     }
-    else {
+    else // option 5: print the number of cases
+    {
 
             s += "Number of cases: " + to_string(list.size());
         s += "\n\n\n\n\n";

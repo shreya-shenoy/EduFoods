@@ -46,13 +46,6 @@ cmake_ninja_workdir = /Users/shreyashenoy/CLionProjects/Project3/cmake-build-deb
 
 build cmake_object_order_depends_target_Project3: phony || CMakeFiles/Project3.dir
 
-build CMakeFiles/Project3.dir/main.cpp.o: CXX_COMPILER__Project3_Debug /Users/shreyashenoy/CLionProjects/Project3/main.cpp || cmake_object_order_depends_target_Project3
-  DEP_FILE = CMakeFiles/Project3.dir/main.cpp.o.d
-  FLAGS = -march=core2 -mtune=haswell -mssse3 -ftree-vectorize -fPIC -fPIE -fstack-protector-strong -O2 -pipe -stdlib=libc++ -fvisibility-inlines-hidden -std=c++14 -fmessage-length=0 -isystem /Users/shreyashenoy/opt/anaconda3/include -std=c++11 -g -isysroot /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk -fcolor-diagnostics
-  INCLUDES = -isystem /usr/local/include
-  OBJECT_DIR = CMakeFiles/Project3.dir
-  OBJECT_FILE_DIR = CMakeFiles/Project3.dir
-
 build CMakeFiles/Project3.dir/Node.cpp.o: CXX_COMPILER__Project3_Debug /Users/shreyashenoy/CLionProjects/Project3/Node.cpp || cmake_object_order_depends_target_Project3
   DEP_FILE = CMakeFiles/Project3.dir/Node.cpp.o.d
   FLAGS = -march=core2 -mtune=haswell -mssse3 -ftree-vectorize -fPIC -fPIE -fstack-protector-strong -O2 -pipe -stdlib=libc++ -fvisibility-inlines-hidden -std=c++14 -fmessage-length=0 -isystem /Users/shreyashenoy/opt/anaconda3/include -std=c++11 -g -isysroot /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk -fcolor-diagnostics
@@ -96,7 +89,7 @@ build CMakeFiles/Project3.dir/HashTable.cpp.o: CXX_COMPILER__Project3_Debug /Use
 #############################################
 # Link the executable Project3
 
-build Project3: CXX_EXECUTABLE_LINKER__Project3_Debug CMakeFiles/Project3.dir/main.cpp.o CMakeFiles/Project3.dir/Node.cpp.o CMakeFiles/Project3.dir/Tree.cpp.o CMakeFiles/Project3.dir/Window.cpp.o CMakeFiles/Project3.dir/DataExtract.cpp.o CMakeFiles/Project3.dir/HashTable.cpp.o | /usr/local/lib/libsfml-graphics.2.6.0.dylib /usr/local/lib/libsfml-audio.2.6.0.dylib /usr/local/lib/libsfml-network.2.6.0.dylib /usr/local/lib/libsfml-window.2.6.0.dylib /usr/local/lib/libsfml-system.2.6.0.dylib
+build Project3: CXX_EXECUTABLE_LINKER__Project3_Debug CMakeFiles/Project3.dir/Node.cpp.o CMakeFiles/Project3.dir/Tree.cpp.o CMakeFiles/Project3.dir/Window.cpp.o CMakeFiles/Project3.dir/DataExtract.cpp.o CMakeFiles/Project3.dir/HashTable.cpp.o | /usr/local/lib/libsfml-graphics.2.6.0.dylib /usr/local/lib/libsfml-audio.2.6.0.dylib /usr/local/lib/libsfml-network.2.6.0.dylib /usr/local/lib/libsfml-window.2.6.0.dylib /usr/local/lib/libsfml-system.2.6.0.dylib
   FLAGS = -march=core2 -mtune=haswell -mssse3 -ftree-vectorize -fPIC -fPIE -fstack-protector-strong -O2 -pipe -stdlib=libc++ -fvisibility-inlines-hidden -std=c++14 -fmessage-length=0 -isystem /Users/shreyashenoy/opt/anaconda3/include -std=c++11 -g -isysroot /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk
   LINK_FLAGS = -Wl,-pie -Wl,-headerpad_max_install_names -Wl,-dead_strip_dylibs -Wl,-rpath,/Users/shreyashenoy/opt/anaconda3/lib -L/Users/shreyashenoy/opt/anaconda3/lib
   LINK_LIBRARIES = -Wl,-rpath,/usr/local/lib  /usr/local/lib/libsfml-graphics.2.6.0.dylib  /usr/local/lib/libsfml-audio.2.6.0.dylib  /usr/local/lib/libsfml-network.2.6.0.dylib  /usr/local/lib/libsfml-window.2.6.0.dylib  /usr/local/lib/libsfml-system.2.6.0.dylib
